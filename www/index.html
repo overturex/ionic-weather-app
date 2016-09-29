@@ -49,19 +49,23 @@
              <button class="button button-block button-positive" ng-click="findCity()">submit</button>
          </div>
         <ion-list>
-            <ion-item ng-repeat="weather in WeatherList">
-            <h3>{{weather.city}}</h3>
-            <div>{{weather.description}}</div>
-            <div>
-              <img ng-src="{{weather.icon}}" alt="weather-icon">
-            </div>
-            <div>
-              current: {{weather.temperature.temp | number:1}}
-              <br>
-              min: {{weather.temperature.temp_min | number:1 }}
-              <br>
-              max: {{weather.temperature.temp_max | number:1 }}
-            </div>
+          <ion-item ng-repeat="weather in WeatherList">
+              <div class="weather">
+                  <div class="row">
+                      <div class="col col-center">
+                          <div class="weather-city">{{weather.city}}</div>
+                      </div>
+                      <div class="col col-center">
+                          <img class="weather-icon" ng-src="{{weather.icon}}" alt="weather-icon">
+                          <!--<div class="weather-description">{{weather.description}}</div>-->
+                      </div>
+                      <div class="col col-center">
+                          <div class="temp temp-current">{{weather.temperature.temp | number:1}}</div>
+                          <div class="temp temp-min">min: {{weather.temperature.temp_min | number:1 }}</div>
+                          <div class="temp temp-max">max: {{weather.temperature.temp_max | number:1 }}</div>
+                      </div>
+                  </div>
+              </div>
           </ion-item>
         </ion-list>
       </ion-content>

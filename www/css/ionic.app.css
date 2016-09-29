@@ -9836,3 +9836,22 @@ ion-spinner svg {
 
 .bar.bar-stable {
   background: lightgoldenrodyellow; }
+
+.weather .weather-city {
+  text-transform: uppercase; }
+
+.weather .weather-icon {
+  height: 80px; }
+
+.weather .weather-description {
+  font-size: 10px;
+  line-height: 10px; }
+
+.weather .temp.temp-current {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold; }
+
+.weather .temp.temp-min, .weather .temp.temp-max {
+  font-size: 12px;
+  line-height: 12px; }

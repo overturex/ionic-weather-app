@@ -6,11 +6,13 @@
 
 (function(){
 
-  var app = angular.module('ionic-app', ['ionic']);
+  var app = angular.module('ionic-app', ['ionic', 'LocalStorageModule']);
 
-  app.config(['$httpProvider', function($httpProvider){
+  app.config(['$httpProvider', 'localStorageServiceProvider', function($httpProvider, localStorageServiceProvider){
 
     $httpProvider.interceptors.push('APIInterceptor');
+
+    localStorageServiceProvider.setPrefix('ionic-weather-app');
 
   }]);
 

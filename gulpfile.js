@@ -10,7 +10,10 @@ var minify = require('gulp-minify');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  js: ['./www/js/**/*.js']
+  js: [
+      './www/lib/angular-local-storage/dist/angular-local-storage.js',
+      './www/js/**/*.js'
+  ]
 };
 
 gulp.task('default', ['sass', 'js', 'compress']);
@@ -31,11 +34,11 @@ gulp.task('sass', function(done) {
 gulp.task('js', function() {
     return gulp.src(paths.js)
         .pipe(concat('all.js'))
-        .pipe(gulp.dest('./www/build/assets/js/'));
+        .pipe(gulp.dest('./www/src/js/'));
 });
 
 gulp.task('compress', function() {
-    gulp.src('./www/build/assets/js/*.js')
+    gulp.src(['./www/src/js/**/*.js'])
         .pipe(minify({
             // ext:{
             //     src:'.js',

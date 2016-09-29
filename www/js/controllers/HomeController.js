@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('ionic-app').controller('HomeController', ['$scope', 'WeatherService', function($scope, WeatherService){
+    angular.module('ionic-app').controller('HomeController', ['$scope', 'WeatherService', 'localStorageService', function($scope, WeatherService, localStorageService){
 
         $scope.WeatherList = [];
         $scope.NewCityForm = false;
@@ -8,12 +8,19 @@
 
         function init(){
 
-            WeatherService.getWeatherByGeoLocation()
-                .then(function(weather){
-                    if(weather.name)
-                        $scope.City = weather.name;
-                    $scope.WeatherList.push(weather);
-                });
+            // if(localStorageService.get('ionic-weather-app')){
+            //     console.log(localStorageService.get('ionic-weather-app'));
+            //     localStorageService.clearAll();
+            // }
+            // else {
+                WeatherService.getWeatherByGeoLocation()
+                    .then(function (weather) {
+                        $scope.WeatherList.push(weather);
+
+                        localStorageService.set('WeatherList', $scope.WeatherList);
+                        console.log(localStorageService.get('WeatherList'));
+                    });
+            //}
         };
         init();
 

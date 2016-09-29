@@ -605,7 +605,7 @@ angular
                         $scope.WeatherList.push(weather);
 
                         localStorageService.set('WeatherList', $scope.WeatherList);
-                        //console.log(localStorageService.get('WeatherList'));
+                        console.log(localStorageService.get('WeatherList'));
                     });
             //}
         };
