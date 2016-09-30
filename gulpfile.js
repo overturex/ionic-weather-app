@@ -13,7 +13,9 @@ var paths = {
   js: [
       './www/lib/angular-local-storage/dist/angular-local-storage.js',
       './www/js/**/*.js'
-  ]
+  ],
+  jsSrc:['./www/src/js/**/*.js'],
+  jsMinified:''
 };
 
 gulp.task('default', ['sass', 'js', 'compress']);
@@ -38,21 +40,23 @@ gulp.task('js', function() {
 });
 
 gulp.task('compress', function() {
-    gulp.src(['./www/src/js/**/*.js'])
+    gulp.src(paths.jsSrc)
         .pipe(minify({
-            // ext:{
-            //     src:'.js',
-            //     min:'.js'
-            // },
+            ext:{
+                //src:'-debug.js',
+                min:'.js'
+            },
             //exclude: ['tasks'],
-            ignoreFiles: ['-min.js']
+            //ignoreFiles: ['-min.js'],
+            noSource:true
         }))
-        .pipe(gulp.dest('./www/build/assets/js/'))
+        .pipe(gulp.dest('./www/build/assets/js/'));
 });
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.js, ['js', 'compress']);
+  gulp.watch(paths.js, ['js']);
+  gulp.watch(paths.jsSrc, ['compress'])
 });
 
 gulp.task('install', ['git-check'], function() {

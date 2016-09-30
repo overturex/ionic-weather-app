@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -30,45 +30,47 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-      <script src="build/assets/js/all-min.js"></script>
-  </head>
-  <body ng-app="ionic-app">
-    <ion-pane ng-controller="HomeController" id="layout">
-      <ion-header-bar class="bar-stable">
+    <script src="build/assets/js/all.js"></script>
+</head>
+<body ng-app="ionic-app">
+<ion-pane ng-controller="HomeController">
+    <ion-header-bar class="bar-calm">
+        <button class="button button-icon icon ion-ios-minus-outline" ng-click="shouldShowDelete = !shouldShowDelete"></button>
         <h1 class="title">Ionic Weather App</h1>
-        <button class="button" ng-click="addCity()">add</button>
-      </ion-header-bar>
-      <ion-spinner ng-show="Processing" id="loading"></ion-spinner>
-      <ion-content has-header="true" ng-show="!Processing">
-         <div ng-show="NewCityForm">
-             <div class="list">
-                 <label class="item item-input">
-                     <input type="text" ng-model="$parent.NewCity" placeholder="City Name">
-                 </label>
-             </div>
-             <button class="button button-block button-positive" ng-click="findCity()">submit</button>
-         </div>
-        <ion-list>
-          <ion-item ng-repeat="weather in WeatherList">
-              <div class="weather">
-                  <div class="row">
-                      <div class="col col-center">
-                          <div class="weather-city">{{weather.city}}</div>
-                      </div>
-                      <div class="col col-center">
-                          <img class="weather-icon" ng-src="{{weather.icon}}" alt="weather-icon">
-                          <!--<div class="weather-description">{{weather.description}}</div>-->
-                      </div>
-                      <div class="col col-center">
-                          <div class="temp temp-current">{{weather.temperature.temp | number:1}}</div>
-                          <div class="temp temp-min">min: {{weather.temperature.temp_min | number:1 }}</div>
-                          <div class="temp temp-max">max: {{weather.temperature.temp_max | number:1 }}</div>
-                      </div>
-                  </div>
-              </div>
-          </ion-item>
+        <button class="button button-icon icon ion-plus-circled" ng-click="addCity()"></button>
+    </ion-header-bar>
+    <ion-spinner id="loading"></ion-spinner>
+    <ion-content has-header="true" id="layout">
+        <div ng-show="NewCityForm">
+            <div class="list">
+                <label class="item item-input">
+                    <input type="text" ng-model="$parent.NewCity" placeholder="City Name">
+                </label>
+            </div>
+            <button class="button button-block button-positive" ng-click="findCity()">submit</button>
+        </div>
+        <ion-list show-delete="shouldShowDelete">
+            <ion-item ng-repeat="weather in WeatherList" class="item-remove-animate">
+                <ion-delete-button class="ion-minus-circled" ng-click="removeWeather($index)"></ion-delete-button>
+                <div class="weather">
+                    <div class="row">
+                        <div class="col col-center">
+                            <div class="weather-city">{{weather.city}}</div>
+                            <div class="weather-description">{{weather.description}}</div>
+                        </div>
+                        <div class="col col-center">
+                            <img class="weather-icon" ng-src="{{weather.icon}}" alt="weather-icon">
+                        </div>
+                        <div class="col col-center">
+                            <div class="temp temp-current">{{weather.temperature.temp | number:1}}</div>
+                            <div class="temp temp-min">min: {{weather.temperature.temp_min | number:1 }}</div>
+                            <div class="temp temp-max">max: {{weather.temperature.temp_max | number:1 }}</div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
         </ion-list>
-      </ion-content>
-    </ion-pane>
-  </body>
+    </ion-content>
+</ion-pane>
+</body>
 </html>

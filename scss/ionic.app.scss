@@ -28,7 +28,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 .scroll {
   display: table-cell;
-  vertical-align: middle;
+  //vertical-align: middle;
   text-align: center;
 }
 
@@ -42,9 +42,9 @@ ion-spinner svg{
   fill:red;
 }
 
-.bar.bar-stable{
-  background: lightgoldenrodyellow;
-}
+//.bar.bar-stable{
+//  background: lightgoldenrodyellow;
+//}
 
 .weather{
 

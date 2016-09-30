@@ -9822,7 +9822,6 @@ a.button {
 
 .scroll {
   display: table-cell;
-  vertical-align: middle;
   text-align: center; }
 
 ion-spinner svg {
@@ -9833,9 +9832,6 @@ ion-spinner svg {
   top: 0;
   bottom: 0;
   fill: red; }
-
-.bar.bar-stable {
-  background: lightgoldenrodyellow; }
 
 .weather .weather-city {
   text-transform: uppercase; }
